@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "832430626481",
+    "project_id": "maxim-a6064",
+    "storage_bucket": "maxim-a6064.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832430626481:android:327cd959cb89e9a50ef490",
+        "android_client_info": {
+          "package_name": "com.example.maxim_ordering_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832430626481-7d4vru3alq0iunlgbe4j1rl65fqp5cmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKDrVeC_oT2kj3odbGkEbN55AyfsWcgnM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832430626481-7d4vru3alq0iunlgbe4j1rl65fqp5cmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
