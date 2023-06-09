@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:maxim_ordering_app/models/stop_model.dart';
+import 'package:maxim_ordering_app/models/stop_model/stop_model.dart';
 part 'order_model.g.dart';
 
 @JsonSerializable()
@@ -13,8 +13,10 @@ class OrderModel {
   String operationId;
   double credit;
   String creditStatus;
-  double cash;
-  String bank;
+  double rentAdjusment;
+  //bankdeposite
+  //rentAdjusment
+  double bankdeposite;
   String recieptPicture;
 
   List<StopModel> stop;
@@ -27,8 +29,8 @@ class OrderModel {
     required this.asmId,
     required this.zmId,
     required this.operationId,
-    required this.bank,
-    required this.cash,
+    required this.bankdeposite,
+    required this.rentAdjusment,
     required this.credit,
     required this.creditStatus,
     required this.recieptPicture,

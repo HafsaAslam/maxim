@@ -5,11 +5,16 @@ part 'product_model.g.dart';
 @JsonSerializable()
 class ProductModel {
   String productName;
-  double price;
-  int quantity;
+  double productPrice;
+  int productQuantity;
+
+  double productAmounttValue;
 
   ProductModel(
-      {required this.productName, required this.quantity, required this.price});
+      {required this.productName,
+      required this.productQuantity,
+      required this.productAmounttValue,
+      required this.productPrice});
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);

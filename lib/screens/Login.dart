@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:maxim_ordering_app/screens/product.dart';
+
+import 'package:maxim_ordering_app/screens/profile.dart';
 
 import '../auth/firebase_auth.dart';
 
@@ -34,7 +35,7 @@ class _LogInState extends State<LogIn> {
                 border:
                     OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
               ),
-              validator: (String? input) {
+              validator: (input) {
                 if (input == null || input.isEmpty) {
                   return "Please type your email.";
                 }
@@ -52,7 +53,7 @@ class _LogInState extends State<LogIn> {
                 }
                 return null;
               },
-              obscureText: isHidden,
+              obscureText: true,
             ),
             TextButton(
                 onPressed: () async {
@@ -62,7 +63,7 @@ class _LogInState extends State<LogIn> {
                         password: passwordcontroller.text);
                     if (loggedIn) {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ProductClass()));
+                          builder: (context) => const ProfileSreen()));
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Login Failed')));

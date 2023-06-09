@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maxim_ordering_app/screens/Login.dart';
+import 'package:maxim_ordering_app/screens/login.dart';
 
 import '../auth/firebase_auth.dart';
 
@@ -30,6 +30,7 @@ class _SignUPState extends State<SignUP> {
           children: [
             TextFormField(
                 controller: emailcontroller,
+                keyboardType: TextInputType.name,
                 decoration: InputDecoration(
                   hintText: "Email",
                   border: OutlineInputBorder(
@@ -78,9 +79,9 @@ class _SignUPState extends State<SignUP> {
                     OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
               ),
               validator: (String? input) {
-                if (input == null || input.isEmpty) {
+                if (input == null) {
                   return "Please password.";
-                } else if (input.length < 6) {
+                } else if (input.length < 8) {
                   return "Please enter 8 digits.";
                 }
                 return null;

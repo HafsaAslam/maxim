@@ -7,17 +7,19 @@ part of 'stop_model.dart';
 // **************************************************************************
 
 StopModel _$StopModelFromJson(Map<String, dynamic> json) => StopModel(
-      product: (json['product'] as List<dynamic>)
+      stopName: json['stopName'] as String,
+      stopProducts: (json['stopProducts'] as List<dynamic>)
           .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      name: json['name'] as String,
-      conatctNo: json['conatctNo'] as String,
-      totalquantity: json['totalquantity'] as int,
+      stopConatctNo: json['stopConatctNo'] as String,
+      stopTotalValue: (json['stopTotalValue'] as num).toDouble(),
+      stopTotalquantity: json['stopTotalquantity'] as int,
     );
 
 Map<String, dynamic> _$StopModelToJson(StopModel instance) => <String, dynamic>{
-      'name': instance.name,
-      'conatctNo': instance.conatctNo,
-      'totalquantity': instance.totalquantity,
-      'product': instance.product.map((e) => e.toJson()),
+      'stopName': instance.stopName,
+      'stopConatctNo': instance.stopConatctNo,
+      'stopTotalquantity': instance.stopTotalquantity,
+      'stopTotalValue': instance.stopTotalValue,
+      'stopProducts': instance.stopProducts,
     };

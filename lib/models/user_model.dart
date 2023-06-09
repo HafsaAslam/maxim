@@ -9,6 +9,7 @@ class UserModel {
   String cnic;
   String address;
   String userType;
+  //Enum userStatus;
   String userStatus;
   String? operationId;
   String? zmId;

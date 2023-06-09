@@ -1,12 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:maxim_ordering_app/firebase_options.dart';
-import 'package:maxim_ordering_app/screens/Login.dart';
-import 'package:maxim_ordering_app/screens/order.dart';
-import 'package:maxim_ordering_app/screens/product.dart';
-import 'package:maxim_ordering_app/screens/signup.dart';
-import 'package:maxim_ordering_app/screens/stop.dart';
+
+import 'package:maxim_ordering_app/utilities/auth_redirect_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,8 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OrderScreen(),
+      home: AuthRedirectScreen(),
     );
     // home: const(title: 'Flutter Demo Home Page'),
   }
 }
+// 'product': instance.product.map((e) => e.toJson()),
