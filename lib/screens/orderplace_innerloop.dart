@@ -11,76 +11,71 @@ class _OrderplaceInnerLoopState extends State<OrderplaceInnerLoop> {
   int itemCount2 = 1;
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        physics: ScrollPhysics(),
-        itemCount: itemCount2,
-        itemBuilder: (context, index) {
-          return Row(
-            children: [
-              Expanded(
-                  flex: 2,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20)))),
-                  )),
-              const SizedBox(
-                width: 5,
-              ),
-              Expanded(
-                  flex: 1,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20)))),
-                  )),
-              const SizedBox(
-                width: 5,
-              ),
-              Expanded(
-                  flex: 1,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20)))),
-                  )),
-              const SizedBox(
-                width: 5,
-              ),
-              Expanded(
-                  flex: 1,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20)))),
-                  )),
-              Flexible(
-                child: itemCount2 < 4
-                    ? TextButton(
-                        onPressed: () {
-                          setState(() {
-                            itemCount2++;
-                          });
-                        },
-                        child: Text("Add"))
-                    : SizedBox(height: 10, width: 30),
-              ),
-              Flexible(
-                child: TextButton(
-                    onPressed: () {
-                      setState(() {
-                        itemCount2 > 1 ? (itemCount2--) : SizedBox();
-                      });
-                    },
-                    child: Text("Removes")),
-              ),
-            ],
-          );
-        });
+    return Scaffold(
+      body: ListView.builder(
+          shrinkWrap: true,
+          physics: const ScrollPhysics(),
+          itemCount: itemCount2,
+          itemBuilder: (context, index) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              // crossAxisAlignment: CrossAxisAlignment.,
+              children: [
+                Expanded(
+                    flex: 2,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)))),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)))),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)))),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)))),
+                    )),
+                Flexible(
+                  child: itemCount2 < 4
+                      ? TextButton(
+                          onPressed: () {
+                            setState(() {
+                              itemCount2++;
+                            });
+                          },
+                          child: const Text("Add"))
+                      : const SizedBox(),
+                ),
+                Flexible(
+                  child: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          itemCount2 > 1 ? (itemCount2--) : const SizedBox();
+                        });
+                      },
+                      child: const Text("Removes")),
+                ),
+              ],
+            );
+          }),
+    );
   }
 }

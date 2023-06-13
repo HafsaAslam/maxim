@@ -11,10 +11,10 @@ class UserModel {
   String userType;
   //Enum userStatus;
   String userStatus;
-  String? operationId;
-  String? zmId;
-  String? asmId;
-  String? asoId;
+  String operationId;
+  String zmId;
+  String asmId;
+  String asoId;
 
   UserModel(
       {required this.name,
@@ -24,10 +24,10 @@ class UserModel {
       required this.address,
       required this.userType,
       required this.userStatus,
-      this.zmId,
-      this.operationId,
-      this.asmId,
-      this.asoId});
+      required this.zmId,
+      required this.operationId,
+      required this.asmId,
+      required this.asoId});
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);

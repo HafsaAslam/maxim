@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:maxim_ordering_app/models/order_model/order_editingcontroller.dart';
 import 'package:maxim_ordering_app/models/stop_model/stop_model.dart';
-import 'package:maxim_ordering_app/models/user_model.dart';
+import 'package:maxim_ordering_app/models/user_model/user_model.dart';
 part 'order_model.g.dart';
 
 @JsonSerializable()
@@ -13,11 +13,13 @@ class OrderModel {
   String asmId;
   String zmId;
   String operationId;
+  //need to make alg model for add credit
   double credit;
   String creditStatus;
   double rentAdjusment;
-  //bankdeposite
-  //rentAdjusment
+
+  //bank name feild
+  String bankName;
   double bankdeposite;
   String recieptPicture;
   int orderTotalquantity;
@@ -32,6 +34,7 @@ class OrderModel {
     required this.asmId,
     required this.zmId,
     required this.operationId,
+    required this.bankName,
     required this.bankdeposite,
     required this.rentAdjusment,
     required this.credit,
@@ -52,10 +55,11 @@ class OrderModel {
           orderNumber: DateTime.now().toString(),
           orderStatus: "orderStatus",
           dealerId: userModel.id,
-          asoId: userModel.asoId ?? '',
-          asmId: userModel.asmId ?? '',
-          zmId: userModel.zmId ?? '',
-          operationId: userModel.operationId ?? '',
+          asoId: userModel.asoId,
+          asmId: userModel.asmId,
+          zmId: userModel.zmId,
+          operationId: userModel.operationId,
+          bankName: "",
           bankdeposite: 60,
           rentAdjusment: 90,
           credit: 50,
