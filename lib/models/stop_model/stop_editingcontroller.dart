@@ -4,15 +4,35 @@ import 'package:maxim_ordering_app/models/product_model/product_editingcontrolle
 
 class StopEditingController {
   TextEditingController stopNameController;
-  TextEditingController stopTotalValueController;
-  TextEditingController stopQuantityController;
+
   TextEditingController stopContactNo;
   List<ProductEditingController> productController;
 
   StopEditingController(
       {required this.stopNameController,
-      required this.stopTotalValueController,
-      required this.stopQuantityController,
       required this.productController,
       required this.stopContactNo});
+
+  TextEditingController stopTotalValueController() {
+    TextEditingController stopTotalValue = TextEditingController();
+    double totalamount = 0;
+    for (int i = 0; i < productController.length; i++) {
+      //if(productController[i].productTotalAmountController().text != '')
+      totalamount += double.parse(
+          productController[i].productTotalAmountController().text);
+    }
+    stopTotalValue.text = totalamount.toString();
+    return stopTotalValue;
+  }
+
+  TextEditingController stopTotalQuantityController() {
+    TextEditingController stopTotalQuantity = TextEditingController();
+    double totalquantity = 0;
+    for (int i = 0; i < productController.length; i++) {
+      totalquantity +=
+          double.parse(productController[i].productQuantityController.text);
+    }
+    stopTotalQuantity.text = totalquantity.toString();
+    return stopTotalQuantity;
+  }
 }

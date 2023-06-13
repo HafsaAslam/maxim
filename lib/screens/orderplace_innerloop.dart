@@ -18,21 +18,53 @@ class _OrderplaceInnerLoopState extends State<OrderplaceInnerLoop> {
         itemBuilder: (context, index) {
           return Row(
             children: [
-              Container(
-                height: 20,
-                width: 50,
-                decoration: BoxDecoration(color: Colors.black),
+              Expanded(
+                  flex: 2,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20)))),
+                  )),
+              const SizedBox(
+                width: 5,
               ),
+              Expanded(
+                  flex: 1,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20)))),
+                  )),
+              const SizedBox(
+                width: 5,
+              ),
+              Expanded(
+                  flex: 1,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20)))),
+                  )),
+              const SizedBox(
+                width: 5,
+              ),
+              Expanded(
+                  flex: 1,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20)))),
+                  )),
               Flexible(
                 child: itemCount2 < 4
                     ? TextButton(
                         onPressed: () {
                           setState(() {
-                            if (itemCount2 < 4) {
-                              itemCount2++;
-                            } else {
-                              Text("cant add");
-                            }
+                            itemCount2++;
                           });
                         },
                         child: Text("Add"))

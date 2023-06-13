@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:maxim_ordering_app/firebase_options.dart';
+import 'package:maxim_ordering_app/screens/profile.dart';
 
 import 'package:maxim_ordering_app/utilities/auth_redirect_screen.dart';
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AuthRedirectScreen(),
+      //  home: AuthRedirectScreen(),
+      home: ProfileSreen(),
     );
     // home: const(title: 'Flutter Demo Home Page'),
   }

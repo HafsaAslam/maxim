@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maxim_ordering_app/customized_widgets/orderplace_innerloop.dart';
+import 'package:maxim_ordering_app/screens/orderplace_innerloop.dart';
 
 class OrderPlaceScreen extends StatefulWidget {
   const OrderPlaceScreen({super.key});
@@ -35,7 +35,11 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
                     width: 50,
                     decoration: BoxDecoration(color: Colors.amber),
                   ),
-                  Flexible(child: OrderplaceInnerLoop())
+                  Row(
+                    children: [
+                      Flexible(child: OrderplaceInnerLoop()),
+                    ],
+                  )
                 ],
               );
             },

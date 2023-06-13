@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:maxim_ordering_app/models/product_model/product_model.dart';
+import 'package:maxim_ordering_app/models/stop_model/stop_editingcontroller.dart';
 
 part 'stop_model.g.dart';
 
@@ -23,4 +24,17 @@ class StopModel {
       _$StopModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$StopModelToJson(this);
+
+  factory StopModel.fromController(StopEditingController stopcontroller) =>
+      StopModel(
+          stopName: stopcontroller.stopNameController.text,
+          stopProducts: List.generate(
+              stopcontroller.productController.length,
+              (index) => ProductModel.fromController(
+                  stopcontroller.productController[index])),
+          stopConatctNo: stopcontroller.stopContactNo.text,
+          stopTotalValue:
+              double.parse(stopcontroller.stopTotalValueController().text),
+          stopTotalquantity:
+              int.parse(stopcontroller.stopTotalQuantityController().text));
 }
