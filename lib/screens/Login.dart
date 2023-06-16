@@ -15,7 +15,7 @@ class _LogInState extends State<LogIn> {
   GlobalKey<FormState> _formkey = GlobalKey();
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
-  bool isHidden = true;
+  //bool isHidden = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
