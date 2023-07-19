@@ -1,43 +1,48 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-// import 'package:flutter/material.dart';
-// import 'package:maxim_ordering_app/models/product_model.dart';
+import 'package:flutter/material.dart';
 
-// class ProductClass extends StatefulWidget {
-//   const ProductClass({super.key});
+import '../models/product_model/product_model.dart';
 
-//   @override
-//   State<ProductClass> createState() => _ProductClassState();
-// }
+class ProductClass extends StatefulWidget {
+  const ProductClass({super.key});
 
-// class _ProductClassState extends State<ProductClass> {
-//   CollectionReference productReference =
-//       FirebaseFirestore.instance.collection("product");
-//   void createDocument() async {
-//     ProductModel productModel =
-//         ProductModel(productName: "productName", quantity: 100, price: 250);
-//     try {
-//       await productReference.add(productModel.toJson());
+  @override
+  State<ProductClass> createState() => _ProductClassState();
+}
 
-//       print('Document created successfully!');
-//     } catch (error) {
-//       print('Error creating document: $error');
-//     }
-//   }
+class _ProductClassState extends State<ProductClass> {
+  CollectionReference productReference =
+      FirebaseFirestore.instance.collection("product");
+  void createDocument() async {
+    ProductModel productModel = ProductModel(
+        productName: "Dog Food",
+        productQuantity: 1,
+        productAmounttValue: 1500,
+        productPrice: 1500);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Order'),
-//       ),
-//       body: Center(
-//           child: TextButton(
-//         child: Text("create"),
-//         onPressed: () {
-//           createDocument();
-//         },
-//       )),
-//     );
-//   }
-// }
+    try {
+      await productReference.add(productModel.toJson());
+
+      print('Document created successfully!');
+    } catch (error) {
+      print('Error creating document: $error');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Add Prodct'),
+      ),
+      body: Center(
+          child: TextButton(
+        child: Text("create"),
+        onPressed: () {
+          createDocument();
+        },
+      )),
+    );
+  }
+}

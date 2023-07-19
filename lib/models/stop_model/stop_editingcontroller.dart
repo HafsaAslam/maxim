@@ -5,13 +5,15 @@ import 'package:maxim_ordering_app/models/product_model/product_editingcontrolle
 class StopEditingController {
   TextEditingController stopNameController;
 
-  TextEditingController stopContactNo;
+  TextEditingController stopContactNoController;
+  TextEditingController stopAddressController;
   List<ProductEditingController> productController;
 
   StopEditingController(
       {required this.stopNameController,
       required this.productController,
-      required this.stopContactNo});
+      required this.stopAddressController,
+      required this.stopContactNoController});
 
   TextEditingController stopTotalValueController() {
     TextEditingController stopTotalValue = TextEditingController();

@@ -7,7 +7,9 @@ part 'stop_model.g.dart';
 @JsonSerializable()
 class StopModel {
   String stopName;
+  String stopAddress;
   String stopConatctNo;
+
   int stopTotalquantity;
   double stopTotalValue;
 
@@ -15,6 +17,7 @@ class StopModel {
   List<ProductModel> stopProducts;
   StopModel(
       {required this.stopName,
+      required this.stopAddress,
       required this.stopProducts,
       required this.stopConatctNo,
       required this.stopTotalValue,
@@ -28,11 +31,12 @@ class StopModel {
   factory StopModel.fromController(StopEditingController stopcontroller) =>
       StopModel(
           stopName: stopcontroller.stopNameController.text,
+          stopAddress: stopcontroller.stopAddressController.text,
           stopProducts: List.generate(
               stopcontroller.productController.length,
               (index) => ProductModel.fromController(
                   stopcontroller.productController[index])),
-          stopConatctNo: stopcontroller.stopContactNo.text,
+          stopConatctNo: stopcontroller.stopContactNoController.text,
           stopTotalValue:
               double.parse(stopcontroller.stopTotalValueController().text),
           stopTotalquantity:

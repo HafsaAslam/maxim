@@ -1,16 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:maxim_ordering_app/screens/orderplace_innerloop.dart';
+import 'package:maxim_ordering_app/models/order_model/order_editingcontroller.dart';
+import 'package:maxim_ordering_app/models/product_model/product_editingcontroller.dart';
+import 'package:maxim_ordering_app/models/product_model/product_model.dart';
+import 'package:maxim_ordering_app/models/stop_model/stop_editingcontroller.dart';
+import 'package:maxim_ordering_app/screens/add_products.dart';
 
-class OrderPlaceScreen extends StatefulWidget {
-  const OrderPlaceScreen({super.key});
+class OrderScreen extends StatefulWidget {
+  final List<ProductModel> productNameList;
+  const OrderScreen({
+    Key? key,
+    required this.productNameList,
+  }) : super(key: key);
 
   @override
-  State<OrderPlaceScreen> createState() => _OrderPlaceScreenState();
+  State<OrderScreen> createState() => _OrderScreenState();
 }
 
-class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
+class _OrderScreenState extends State<OrderScreen> {
   int stopCount = 1;
-  String dropdownValue = 'Stop 1';
+  OrderEditingController ordercontroller =
+      OrderEditingController(stopController: [
+    StopEditingController(
+        stopNameController: TextEditingController(),
+        stopAddressController: TextEditingController(),
+        productController: [
+          ProductEditingController(
+              productNameController: TextEditingController(),
+              productPriceController: TextEditingController(),
+              productQuantityController: TextEditingController())
+        ],
+        stopContactNoController: TextEditingController())
+  ]);
+
+  refresh() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +91,12 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
                       ],
                     ),
                   ),
-                  OrderplaceInnerLoop(),
+                  AddProduct(
+                    productList: widget.productNameList,
+                    stopIndex: index,
+                    notifyparent: refresh,
+                    orderController: ordercontroller,
+                  ),
                   // index + 1 == stopCount.bitLength
                   //     ?
                   Divider(),
@@ -84,16 +114,19 @@ class _OrderPlaceScreenState extends State<OrderPlaceScreen> {
                             });
                           },
                           child: const Text("Add")),
-                      TextButton(
-                          onPressed: () {
-                            setState(() {
-                              stopCount > 1 ? (stopCount--) : const SizedBox();
-                            });
-                          },
-                          child: const Text("Remove")),
+                      index + 1 == stopCount.bitLength
+                          ? TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  stopCount > 1
+                                      ? (stopCount--)
+                                      : const SizedBox();
+                                });
+                              },
+                              child: const Text("Remove"))
+                          : const SizedBox(),
                     ],
                   )
-                  // : SizedBox(),
                 ],
               );
             },

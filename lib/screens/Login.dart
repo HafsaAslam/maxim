@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maxim_ordering_app/screens/login_with_number.dart';
 
 import 'package:maxim_ordering_app/screens/profile.dart';
 
@@ -20,7 +21,7 @@ class _LogInState extends State<LogIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("LogIN Page"),
+        title: Text("LogIn Page"),
         centerTitle: true,
       ),
       body: Form(
@@ -47,6 +48,11 @@ class _LogInState extends State<LogIn> {
             ),
             TextFormField(
               controller: passwordcontroller,
+              decoration: InputDecoration(
+                hintText: "Password",
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+              ),
               validator: (String? input) {
                 if (input == null || input.isEmpty) {
                   return "Please type your password.";
@@ -70,7 +76,20 @@ class _LogInState extends State<LogIn> {
                     }
                   }
                 },
-                child: Text('LogIN'))
+                child: Text('LogIn')),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const LoginWithNumber()));
+              },
+              child: Container(
+                height: 50,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.green),
+                child: Center(child: Text("Login With Phone")),
+              ),
+            ),
           ],
         ),
       ),
