@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:maxim_ordering_app/models/order_model/order_editingcontroller.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:maxim_ordering_app/models/product_model/product_editingcontroller.dart';
 import 'package:maxim_ordering_app/models/product_model/product_model.dart';
 
 class AddProduct extends StatefulWidget {
@@ -194,21 +195,86 @@ class _AddProductState extends State<AddProduct> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Flexible(
-                child: TextButton(
-                    onPressed: () {
-                      setState(() {
-                        productCount++;
-                      });
-                    },
-                    child: const Text("Add"))),
+                child: productCount == index + 1
+                    ? ElevatedButton(
+                        onPressed: () {
+                          {
+                            if (widget
+                                        .orderController
+                                        .stopController[widget.stopIndex]
+                                        .productController[index]
+                                        .productNameController
+                                        .text ==
+                                    '-Product Name' ||
+                                widget
+                                        .orderController
+                                        .stopController[widget.stopIndex]
+                                        .productController[index]
+                                        .productTotalAmountController()
+                                        .text ==
+                                    '' ||
+                                widget
+                                        .orderController
+                                        .stopController[widget.stopIndex]
+                                        .productController[index]
+                                        .productTotalAmountController()
+                                        .text ==
+                                    '0') {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          'Please add product to the current row first!'),
+                                      actions: [
+                                        TextButton(
+                                          child: const Text('Ok'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  });
+                              // showMessageDialog(
+                              //     message:
+                              //         'Please add product to the current row first!',
+                              //     context: context);
+                            } else {
+                              widget
+                                  .orderController
+                                  .stopController[widget.stopIndex]
+                                  .productController
+                                  .add(ProductEditingController(
+                                      productNameController:
+                                          TextEditingController(),
+                                      productPriceController:
+                                          TextEditingController(),
+                                      productQuantityController:
+                                          TextEditingController()));
+                            }
+
+                            setState(() {
+                              productCount++;
+                            });
+                          }
+                        },
+                        child: const Text("Add"))
+                    : SizedBox()),
             Flexible(
-              child: TextButton(
-                  onPressed: () {
-                    setState(() {
-                      productCount > 1 ? (productCount--) : const SizedBox();
-                    });
-                  },
-                  child: const Text("Remove")),
+              child: productCount == index + 1 && productCount != 1
+                  ? TextButton(
+                      onPressed: () {
+                        widget.orderController.stopController[widget.stopIndex]
+                            .productController
+                            .removeLast();
+                        setState(() {
+                          productCount > 1 ? (productCount--) : productCount;
+                          widget.notifyparent();
+                        });
+                      },
+                      child: const Text("Remove"))
+                  : SizedBox(),
             ),
           ],
         )
